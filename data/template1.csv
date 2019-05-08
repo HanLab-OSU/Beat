@@ -1,0 +1,6 @@
+Name,Directory,Sample,Target Sequence,Base Position in Spacer,Conversion,Efficiency
+ABE-NGG,example,Site2_PCR_control-1.ab1,GAGTATGAGGCATAGACTGC,5,AG,
+ABE-NGG,example,Site2_PCR_control-2.ab1,GAGTATGAGGCATAGACTGC,5,AG,
+ABE-NGG,example,Site2_PCR_420.ab1,GAGTATGAGGCATAGACTGC,5,AG,
+ABE-NGG,example,Site2_PCR_570-1.ab1,GAGTATGAGGCATAGACTGC,5,AG,
+ABE-NGG,example,Site2_PCR_570-2.ab1,GAGTATGAGGCATAGACTGC,5,AG,
