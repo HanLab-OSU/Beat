@@ -4,7 +4,16 @@ the background noise without normalization to controls.
 It finds the noise and filters the outliers from the noise
 using the Median Absolute Deviation (MAD) method
 
-## Usage example
+## Usage
+The usage:
+```bash
+python Beat.py [--data-path] [--filename|all] [--spacer] [-base-change-position] [--change-pattern] 
+```
+or for the batch analysis:
+```bash
+python Beat.py [--csv-path]
+```
+## Example
 To run batch analysis:
 ```bash
 python Beat.py ./data all GAGTATGAGGCATAGACTGC 5 AG
