@@ -16,6 +16,7 @@ import numpy as np
 from scipy import stats
 
 start = timeit.default_timer()
+# spacer_err = []    # track the file which contain no spacer
 print("running...")
 
 #############################################################
@@ -370,7 +371,7 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
         # Replace with raise or error
         print("Cannot find spacer " + spacer + " in " + file_name + ".")
         print(call)
-        sys.exit()
+
 
     # Estimate the background for each base from the 101th base to the 50th of the last.
     bg_dict = background_estimation(call,peaks_vals,trace)
