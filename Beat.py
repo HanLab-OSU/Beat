@@ -61,7 +61,6 @@ letter2nucl = {
 def rev_comp(seq):
     return str(Seq(seq).reverse_complement())
 
-
 def removeOutliersMAD(x):
     # Median absolute deviation (MAD), based on the median, is a robust non-parametric statistics.
     # https://en.wikipedia.org/wiki/Median_absolute_deviation.
@@ -280,7 +279,7 @@ def plt_figure(trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_
              linewidth=0.6)  # A
     ax1.plot(trace['T'][peaks_vals[pos_in_call] - 8: peaks_vals[pos_in_call + len(spacer) - 1] + 8], color='r', label='T',
              linewidth=0.6)  # T
-    ax1.plot(trace['T'][peaks_vals[pos_in_call] - 8: peaks_vals[pos_in_call + len(spacer) - 1] + 8], color='b', label='C',
+    ax1.plot(trace['C'][peaks_vals[pos_in_call] - 8: peaks_vals[pos_in_call + len(spacer) - 1] + 8], color='b', label='C',
              linewidth=0.6)  # C
     ax1.annotate('G', xy=(10, 60), xycoords='axes points', size=5, color='black', weight='bold', ha='right', va='top')
     ax1.annotate('A', xy=(14, 60), xycoords='axes points', size=5, color='g', weight='bold', ha='right', va='top')
@@ -367,10 +366,13 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
 
     # Find the spacer position in the base call
     pos_in_call,strand,base_pos_in_spacer = find_subseq(spacer,call,base_change,base_pos_in_spacer)
-    if (pos_in_call == -1):
+    if strand == '-':
+        spacer = rev_comp(spacer)
+    if pos_in_call == -1:
         # Replace with raise or error
+        print("*********Warning*********")
         print("Cannot find spacer " + spacer + " in " + file_name + ".")
-        print(call)
+        return None
 
 
     # Estimate the background for each base from the 101th base to the 50th of the last.
@@ -482,6 +484,7 @@ def main():
 
 
 if __name__ == "__main__":
+    # print(rev_comp('GAGTATGAGGCATAGACTGC'))
     main()
 
 stop = timeit.default_timer()
