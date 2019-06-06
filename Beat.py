@@ -362,7 +362,7 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
         'T': trace_T,
         'C': trace_C
     }
-    print(trace['G'])
+    
     # Base calls for file
     call = sample.annotations['abif_raw']['PBAS1']
     # These are the positions that correspond to each base call in the original trace
