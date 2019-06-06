@@ -1,4 +1,4 @@
-# Beat8 - Base Editing Analysis Tool version 8
+# Beat - Base Editing Analysis Tool
 Beat8 determines editing effiency after substracting
 the background noise without normalization to controls. 
 It finds the noise and filters the outliers from the noise
