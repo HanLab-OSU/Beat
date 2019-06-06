@@ -265,7 +265,7 @@ def write_excel(data, spacer, filename, spacer_pos, mutated_base, estimation, st
     wb.save('./result/'+filename.split('.')[0]+'.xlsx')
 
 
-def plt_figure(trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_pos_in_spacer):
+def plt_figure(trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_pos_in_spacer,strand):
     # Plot the trace and table showing % of each base along the spacer
 
     fig, (ax1, ax2) = plt.subplots(2, figsize=(4, 2.5))
@@ -325,8 +325,12 @@ def plt_figure(trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_
     box = ax2.get_position()
     ax2.set_position([box.x0 + 0.038, box.y0 + 0.15, box.width * 0.9, box.height * 0.8])
     # ax2.arrow(0, 20, 10, 47, head_width=1, head_length=2, fc='k', ec='k')
-    ax2.annotate("5'>", xy=(0, 47), xycoords='axes points',
-                 size=5, color='k', weight='bold', ha='right', va='top')
+    if (strand == "+"):
+        ax2.annotate("5'>", xy=(0, 47), xycoords='axes points',
+                     size=5, color='k', weight='bold', ha='right', va='top')
+    else:
+        ax2.annotate("3'<", xy=(0, 47), xycoords='axes points',
+                     size=5, color='k', weight='bold', ha='right', va='top')
 
     figfile = filename.split('.')[0] + '.png'
     fig.savefig('./result/'+figfile, dpi=300)
@@ -358,7 +362,7 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
         'T': trace_T,
         'C': trace_C
     }
-
+    print(trace['G'])
     # Base calls for file
     call = sample.annotations['abif_raw']['PBAS1']
     # These are the positions that correspond to each base call in the original trace
@@ -395,10 +399,10 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
         # Obtain the peak value and substrat background
         # If the peak value is less than background, then make it 0.
 
-        gg = max(max(trace_G[base_pos - 3: base_pos + 3]) - bg_dict['G'], 0)
-        aa = max(max(trace_A[base_pos - 3: base_pos + 3]) - bg_dict['A'], 0)
-        tt = max(max(trace_T[base_pos - 3: base_pos + 3]) - bg_dict['T'], 0)
-        cc = max(max(trace_C[base_pos - 3: base_pos + 3]) - bg_dict['C'], 0)
+        gg = max(max(trace_G[base_pos - 1: base_pos + 1]) - bg_dict['G'], 0)
+        aa = max(max(trace_A[base_pos - 1: base_pos + 1]) - bg_dict['A'], 0)
+        tt = max(max(trace_T[base_pos - 1: base_pos + 1]) - bg_dict['T'], 0)
+        cc = max(max(trace_C[base_pos - 1: base_pos + 1]) - bg_dict['C'], 0)
 
         all_sum = gg + aa + tt + cc
 
@@ -431,7 +435,7 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
     lookup_map = {100: 99}
     pos_list = [map(round, vals) for vals in [G_vals, A_vals, T_vals, C_vals]]
     pos_list = [tuple(lookup_map.get(int(e), e) for e in s) for s in pos_list]
-    plt_figure(trace,peaks_vals,spacer,pos_in_call,file_name,pos_list,base_pos_in_spacer)
+    plt_figure(trace,peaks_vals,spacer,pos_in_call,file_name,pos_list,base_pos_in_spacer,strand)
 
     return efficiency
 
@@ -484,8 +488,8 @@ def main():
 
 
 if __name__ == "__main__":
-    # print(rev_comp('GAGTATGAGGCATAGACTGC'))
-    main()
+    print(rev_comp('GAGTATGAGGCATAGACTGC'))
+    # main()
 
 stop = timeit.default_timer()
 print('Completed in %.3f s' % (stop - start))
