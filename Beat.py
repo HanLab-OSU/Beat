@@ -488,8 +488,7 @@ def main():
 
 
 if __name__ == "__main__":
-    print(rev_comp('GAGTATGAGGCATAGACTGC'))
-    # main()
+    main()
 
 stop = timeit.default_timer()
 print('Completed in %.3f s' % (stop - start))
