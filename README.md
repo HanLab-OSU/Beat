@@ -31,5 +31,5 @@ python Beat.py ./data Site2_PCR_420.ab1 GAGTATGAGGCATAGACTGC 5 AG
 ## Dependency
 You can run the following code to install the necesssary packages:
 ```bash
-conda install biopython pandas numpy scipy openpyxl
+pip install biopython pandas numpy scipy openpyxl
 ```
