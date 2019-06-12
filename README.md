@@ -1,6 +1,6 @@
 # Beat - Base Editing Analysis Tool
-Beat8 determines editing effiency after substracting
-the background noise without normalization to controls. 
+Beat determines editing effiency after substracting
+the background noise without the need to normalize to control samples. 
 It finds the noise and filters the outliers from the noise
 using the Median Absolute Deviation (MAD) method
 
@@ -29,7 +29,7 @@ To analyze individual sequencing file, run
 python Beat.py ./data Site2_PCR_420.ab1 GAGTATGAGGCATAGACTGC 5 AG
 ```
 ## Dependency
-You can run the following code to install the necesssary packages:
+To install the necesssary packages, run:
 ```bash
 pip install biopython pandas numpy scipy openpyxl
 ```
