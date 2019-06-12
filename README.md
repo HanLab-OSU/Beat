@@ -33,3 +33,8 @@ To install the necesssary packages, run:
 ```bash
 pip install biopython pandas numpy scipy openpyxl
 ```
+## The Executable file
+To download the .exe file, please use this link:
+```bash
+https://drive.google.com/open?id=13NvLL70i7sTlNw04FF_n4b-RxFndlovw
+```
