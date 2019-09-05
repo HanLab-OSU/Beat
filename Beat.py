@@ -365,7 +365,9 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
     }
     
     # Base calls for file
-    call = sample.annotations['abif_raw']['PBAS1'].decode('utf-8')
+    call = sample.annotations['abif_raw']['PBAS1']
+    if isinstance(call,bytes):
+        call = call.decode('utf-8')
     # These are the positions that correspond to each base call in the original trace
     peaks_vals = sample.annotations['abif_raw']['PLOC1']
 
