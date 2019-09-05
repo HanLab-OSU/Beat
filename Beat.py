@@ -203,7 +203,7 @@ def background_estimation(base_call, peaks_vals, trace):
     return bg_dict
 
 
-def write_excel(data, spacer, filename, spacer_pos, mutated_base, estimation, strand, peak_intensity):
+def write_excel(directory, data, spacer, filename, spacer_pos, mutated_base, estimation, strand, peak_intensity):
 
     # Excel output Construction
     wb = Workbook()
@@ -269,10 +269,10 @@ def write_excel(data, spacer, filename, spacer_pos, mutated_base, estimation, st
         peak_intensity['T'][mutated_base - 1]) + '; C: ' + str(peak_intensity['C'][mutated_base - 1])
 
     # Save the file
-    wb.save('./result/'+filename.split('.')[0]+'.xlsx')
+    wb.save(directory+'/result/'+filename.split('.')[0]+'.xlsx')
 
 
-def plt_figure(trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_pos_in_spacer,strand):
+def plt_figure(directory, trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_pos_in_spacer,strand):
     # Plot the trace and table showing % of each base along the spacer
 
     fig, (ax1, ax2) = plt.subplots(2, figsize=(4, 2.5))
@@ -340,7 +340,7 @@ def plt_figure(trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_
                      size=5, color='k', weight='bold', ha='right', va='top')
 
     figfile = filename.split('.')[0] + '.png'
-    fig.savefig('./result/'+figfile, dpi=300)
+    fig.savefig(directory+'/result/'+figfile, dpi=300)
     plt.close()
 
 
@@ -348,14 +348,12 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
     """
        Calculate editing efficiency of the edited base using the ratio
        of the edited base value to total value (edited + nonedited values)
-
        Input: directory of files, name of file, spacer sequence, position of
        base in spacer, base conversion, control or sample file, from csv or just one file
-
        Output: efficiency, result figure, result excel file
     """
     # delete the var directory
-    sample = SeqIO.read('./' + directory + '/' + file_name, 'abi')
+    sample = SeqIO.read(directory + '/' + file_name, 'abi')
     spacer = spacer.upper()
 
     # Channels for bases: G, A, T, C
@@ -438,13 +436,13 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
            T_vals, C_vals]
 
     '''Output excel and figure'''
-    write_excel(data,spacer,file_name,pos_in_call,base_pos_in_spacer,bg_dict,strand,peak_intensity)
+    write_excel(directory,data,spacer,file_name,pos_in_call,base_pos_in_spacer,bg_dict,strand,peak_intensity)
 
     # Replace any 100% values to 99% for neat plotting of the table.
     lookup_map = {100: 99}
     pos_list = [map(round, vals) for vals in [G_vals, A_vals, T_vals, C_vals]]
     pos_list = [tuple(lookup_map.get(int(e), e) for e in s) for s in pos_list]
-    plt_figure(trace,peaks_vals,spacer,pos_in_call,file_name,pos_list,base_pos_in_spacer,strand)
+    plt_figure(directory,trace,peaks_vals,spacer,pos_in_call,file_name,pos_list,base_pos_in_spacer,strand)
 
     return efficiency
 
@@ -452,8 +450,8 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
 def main():
     # Handle csv input with multiple samples
     # Example: python Beat8.py ./example/template.csv
-    if 'result' not in os.listdir('./'):
-        os.mkdir('result')
+    if 'result' not in os.listdir(sys.argv[1]):
+        os.mkdir(sys.argv[1]+'/result')
     if (sys.argv[1].endswith(".csv")):
         df = pd.read_csv(sys.argv[1])
         efficiencies = []
@@ -484,11 +482,12 @@ def main():
         target = sys.argv[3]
         be_position = sys.argv[4]
         base_change = sys.argv[5]
-        print('The directory is:', './' + directory)
+        print('The directory is:', directory)
 
         if sample_file == 'all' or sample_file == '':
-            for files in os.listdir('./' + directory + '/'):
-                if files[-4:] == '.ab1' or files.split('.')[1] == 'ab1':
+            for files in os.listdir(directory):
+            # for files in os.listdir('./' + directory + '/'):
+                if files[-4:] == '.ab1':
                     sample_file = files
                     print('processing: ' + sample_file)
                     efficiency = get_efficiency(directory, sample_file, target, int(be_position), base_change)
