@@ -449,7 +449,7 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
 
 def main():
     # Handle csv input with multiple samples
-    # Example: python Beat8.py ./example/template.csv
+    # Example: python Beat.py ./example/template.csv
     if 'result' not in os.listdir(sys.argv[1]):
         os.mkdir(sys.argv[1]+'/result')
     if (sys.argv[1].endswith(".csv")):
@@ -473,9 +473,6 @@ def main():
 
         df.to_csv(sys.argv[1], index=False)
 
-    # One sample or entire folder
-    # Example: python Beat8.py foldername example.ab1 GGgtaaatgtagttgataat 6 AG
-    # Example: python Beat8.py foldername all GGgtaaatgtagttgataat 6 AG
     else:
         directory = sys.argv[1]
         sample_file = sys.argv[2]
