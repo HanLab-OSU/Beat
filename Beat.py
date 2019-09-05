@@ -186,7 +186,8 @@ def background_estimation(base_call, peaks_vals, trace):
     Abg_vals_cleaned = removeOutliersMAD(Abg_vals)
     Tbg_vals_cleaned = removeOutliersMAD(Tbg_vals)
     Cbg_vals_cleaned = removeOutliersMAD(Cbg_vals)
-
+    #print([Gbg_vals,Gbg_vals,Tbg_vals,Cbg_vals])
+    #print([Gbg_vals_cleaned,Abg_vals_cleaned,Tbg_vals_cleaned,Cbg_vals_cleaned])
     bg_dict = {
         'G': round(sum(Gbg_vals_cleaned) / len(Gbg_vals_cleaned),1),
         'A': round(sum(Abg_vals_cleaned) / len(Abg_vals_cleaned),1),
@@ -364,7 +365,7 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
     }
     
     # Base calls for file
-    call = sample.annotations['abif_raw']['PBAS1']
+    call = sample.annotations['abif_raw']['PBAS1'].decode('utf-8')
     # These are the positions that correspond to each base call in the original trace
     peaks_vals = sample.annotations['abif_raw']['PLOC1']
 
