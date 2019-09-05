@@ -20,15 +20,21 @@ start = timeit.default_timer()
 print("running...")
 
 #############################################################
-# Beat8 - Base Editing Analysis Tool version 8
-# Version 8 finds the noise and filter the outliers from the noise
-# Run batch analysis as python Beat8.py ./example/template1.csv
-# or python Beat8.py foldername all GGgtaaatgtagttgataat 6 AG
-# to analyze all sequencing files if they have the same spacer
-# or Analyze individual sequencing file as
-# python Beat8.py foldername sample.ab1 TCGGCCACCACAGGGAAGCT 6 CT
-# The editing effiency is determined after substracting
-# the background noise without normalization to controls
+# Beat - Base Editing Analysis Tool
+# Beat determines editing effiency after substracting
+#   the background noise without normalization to controls. 
+# It finds the noise and filters the outliers from the noise
+#   using the Median Absolute Deviation (MAD) method
+#
+# Run batch analysis as 
+#   python Beat.py foldername all GAGTATGAGGCATAGACTGC 5 AG
+#   to analyze all sequencing files if they have the same spacer
+#
+#   or python Beat.py ./data/template1.csv if they contain
+#   different spacers
+#
+# To analyze individual sequencing file,
+#   python Beat.py foldername Site2_PCR_420.ab1 GAGTATGAGGCATAGACTGC 5 AG
 #############################################################
 
 # define degenerate nucleotides
