@@ -31,7 +31,7 @@ python Beat.py ./data Site2_PCR_420.ab1 GAGTATGAGGCATAGACTGC 5 AG
 ## Dependency
 To install the necesssary packages, run:
 ```bash
-pip install biopython pandas numpy scipy openpyxl
+pip install biopython pandas numpy scipy openpyxl matplotlib
 ```
 ## The Executable file
 To download the .exe file, please use this link:
