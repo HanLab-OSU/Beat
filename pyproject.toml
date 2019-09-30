@@ -2,7 +2,7 @@
 name = "Beat"
 version = "0.0.0"
 description = ""
-authors = ["HanLab-OSU", <"https://github.com/HanLab-OSU">]
+authors = ["HanLab-OSU", "https://github.com/HanLab-OSU"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
