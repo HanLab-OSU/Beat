@@ -169,7 +169,11 @@ def find_subseq(pattern, seq, base_change, base_pos_in_spacer):
             p_in_call = subseq(pattern.replace('T', 'Y'), seq)
         if base_change == 'GA':
             p_in_call = subseq(pattern.replace('G', 'R'), seq)
-
+        if base_change == 'CT':
+            p_in_call = subseq(pattern.replace('C', 'Y'), seq)
+        if base_change == 'AG':
+            p_in_call = subseq(pattern.replace('A', 'R'), seq)
+            
     return p_in_call, strand, base_pos_in_spacer
 
 
