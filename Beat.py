@@ -150,23 +150,27 @@ def find_subseq(pattern, seq, base_change, base_pos_in_spacer):
     # Add a base_change check
     strand = ''
     if base_change == 'AG':
-        pos_in_call = subseq(pattern.replace('A','R'),seq)
+        p_in_call = subseq(pattern.replace('A','R'),seq)
     if base_change == 'CT':
-        pos_in_call = subseq(pattern.replace('C', 'Y'), seq)
-    if pos_in_call == -1:
+        p_in_call = subseq(pattern.replace('C', 'Y'), seq)
+    if base_change == 'GA':
+        p_in_call = subseq(pattern.replace('G','R'),seq)
+    if base_change == 'TC':
+        p_in_call = subseq(pattern.replace('T', 'Y'), seq)
+
+    if p_in_call != -1:
+        strand = '+'
+    else:
+        strand = '-'
         pattern = rev_comp(pattern)
         base_pos_in_spacer = len(pattern) - base_pos_in_spacer + 1
         base_change = rev_comp(base_change[0]) + rev_comp(base_change[1])
         if base_change == 'TC':
-            pos_in_call = subseq(pattern.replace('T', 'Y'), seq)
+            p_in_call = subseq(pattern.replace('T', 'Y'), seq)
         if base_change == 'GA':
-            pos_in_call = subseq(pattern.replace('G', 'R'), seq)
-        if pos_in_call != -1:
-            strand = '-'
-    else:
-        strand = '+'
+            p_in_call = subseq(pattern.replace('G', 'R'), seq)
 
-    return pos_in_call, strand, base_pos_in_spacer
+    return p_in_call, strand, base_pos_in_spacer
 
 
 def background_estimation(base_call, peaks_vals, trace):
