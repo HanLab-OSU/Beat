@@ -173,7 +173,7 @@ def find_subseq(pattern, seq, base_change, base_pos_in_spacer):
             p_in_call = subseq(pattern.replace('C', 'Y'), seq)
         if base_change == 'AG':
             p_in_call = subseq(pattern.replace('A', 'R'), seq)
-            
+
     return p_in_call, strand, base_pos_in_spacer
 
 
@@ -277,7 +277,7 @@ def write_excel(directory, data, spacer, filename, spacer_pos, mutated_base, est
         peak_intensity['T'][mutated_base - 1]) + '; C: ' + str(peak_intensity['C'][mutated_base - 1])
 
     # Save the file
-    wb.save(directory+'/result/'+filename.split('.')[0]+'.xlsx')
+    wb.save(directory+'/result/'+filename.split('.ab1')[0]+'.xlsx')
 
 
 def plt_figure(directory, trace, peaks_vals, spacer, pos_in_call, filename, pos_list, base_pos_in_spacer,strand):
@@ -347,7 +347,7 @@ def plt_figure(directory, trace, peaks_vals, spacer, pos_in_call, filename, pos_
         ax2.annotate("3'<", xy=(0, 47), xycoords='axes points',
                      size=5, color='k', weight='bold', ha='right', va='top')
 
-    figfile = filename.split('.')[0] + '.png'
+    figfile = filename.split('.ab1')[0] + '.png'
     fig.savefig(directory+'/result/'+figfile, dpi=300)
     plt.close()
 
@@ -385,6 +385,7 @@ def get_efficiency(directory, file_name, spacer, base_pos_in_spacer, base_change
 
     # Find the spacer position in the base call
     pos_in_call,strand,base_pos_in_spacer = find_subseq(spacer,call,base_change,base_pos_in_spacer)
+    #print(pos_in_call)
     if strand == '-':
         spacer = rev_comp(spacer)
     if pos_in_call == -1:
