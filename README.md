@@ -4,6 +4,17 @@ the background noise without the need to normalize to control samples.
 It finds the noise and filters the outliers from the noise
 using the Median Absolute Deviation (MAD) method
 
+## The Executable files
+To download the .exe file, please use this link:
+```bash
+https://drive.google.com/open?id=13NvLL70i7sTlNw04FF_n4b-RxFndlovw
+```
+
+To download the macOS executable, please click this link:
+```bash
+https://github.com/HanLab-OSU/Beat/releases/download/macOS/Beat_OSX
+```
+
 ## Usage
 The usage:
 ```bash
@@ -32,9 +43,4 @@ python Beat.py ./data Site2_PCR_420.ab1 GAGTATGAGGCATAGACTGC 5 AG
 To install the necesssary packages, run:
 ```bash
 pip install biopython pandas numpy scipy openpyxl
-```
-## The Executable file
-To download the .exe file, please use this link:
-```bash
-https://drive.google.com/open?id=13NvLL70i7sTlNw04FF_n4b-RxFndlovw
 ```
