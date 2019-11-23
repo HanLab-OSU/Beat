@@ -6,11 +6,15 @@ using the Median Absolute Deviation (MAD) method
 
 ## Download Executable Files
 To download the macOS executable, please click this link:
+
+https://github.com/HanLab-OSU/Beat/releases/download/macOS/Beat_OSX.zip
 ```bash
-https://github.com/HanLab-OSU/Beat/releases/download/macOS/Beat_OSX
+After unzip the file, you may need to hold control while clicking the file to open.
 ```
 
 To download the .exe file, please use this link:
-```bash
+
 https://github.com/HanLab-OSU/Beat/releases/download/Windows/Beat_Win.exe
+```bash
+The all-in-one windows version loads slowly in the beginning. Once it is loaded, it runs well. 
 ```
