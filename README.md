@@ -4,15 +4,20 @@ the background noise without the need to normalize to control samples.
 It finds the noise and filters the outliers from the noise
 using the Median Absolute Deviation (MAD) method
 
+
+## Access the online BEAT
+To access the online tool, please follow this link:
+https://hanlab.cc/beat/
+
 ## Download Executable Files
-To download the macOS executable, please click this link:
+To download the macOS executable, please follow this link:
 
 https://github.com/HanLab-OSU/Beat/releases/download/macOS/Beat_OSX.zip
 ```bash
 After unzip the file, you may need to hold control while clicking the file to open.
 ```
 
-To download the .exe file for Windows, please click this link:
+To download the .exe file for Windows, please follow this link:
 
 https://github.com/HanLab-OSU/Beat/releases/download/Windows/Beat_Win.exe
 ```bash
