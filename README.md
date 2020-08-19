@@ -9,21 +9,4 @@ using the Median Absolute Deviation (MAD) method
 To access the online tool, please follow this link:
 https://hanlab.cc/beat/
 
-## Download Executable Files
-To download the macOS executable, please follow this link:
-
-https://github.com/HanLab-OSU/Beat/releases/download/macOS/Beat_OSX.zip
-```bash
-After unzip the file, you may need to hold control while clicking the file to open.
-```
-
-To download the .exe file for Windows, please follow this link:
-
-https://github.com/HanLab-OSU/Beat/releases/download/Windows/Beat_Win.exe
-```bash
-The above all-in-one windows version loads slowly in the beginning. Once it is loaded, it runs well.
-If you want to run it faster, you can download the following zip file and unzip in a folder, 
-click Beat_Win.exe in the unzipped folder to run.
-```
-https://github.com/HanLab-OSU/Beat/releases/download/Windows/Beat_Win.zip
 
