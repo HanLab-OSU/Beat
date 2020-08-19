@@ -9,4 +9,6 @@ using the Median Absolute Deviation (MAD) method
 To access the online tool, please follow this link:
 https://hanlab.cc/beat/
 
+Please cite our paper if you use BEAT for your work:
+Xu L, Liu Y, Han R. (2019) BEAT: A python program to quantify base editing from Sanger sequencing. CRISPR J doi: 10.1089/crispr.2019.0017. 
 
